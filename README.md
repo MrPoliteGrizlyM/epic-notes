@@ -1,2 +1,2 @@
 # Epic-Notes App
-Just an EPIC note taking app.
+Just a basic note taking app.
