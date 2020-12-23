@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="26942fed-4d66-464a-98e8-9b7ddd00d9d9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/frontend" />
+  </component>
+  <component name="ProjectId" id="1lo4ViNUyfz1AjNeZfsIpGEnW6T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/frontend/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/models" />
+      <recent name="$PROJECT_DIR$/api/src" />
+      <recent name="$PROJECT_DIR$/api/config" />
+      <recent name="$PROJECT_DIR$/api/src/models" />
+      <recent name="$PROJECT_DIR$/api/src/config" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26942fed-4d66-464a-98e8-9b7ddd00d9d9" name="Default Changelist" comment="" />
+      <created>1608250137679</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608250137679</updated>
+      <workItem from="1608250139420" duration="5930000" />
+      <workItem from="1608351235069" duration="4760000" />
+      <workItem from="1608406225919" duration="7395000" />
+      <workItem from="1608586193246" duration="233000" />
+      <workItem from="1608599285336" duration="5359000" />
+      <workItem from="1608606526420" duration="76000" />
+      <workItem from="1608606615930" duration="21000" />
+      <workItem from="1608606656806" duration="8574000" />
+      <workItem from="1608619158975" duration="49000" />
+      <workItem from="1608619231949" duration="4819000" />
+      <workItem from="1608668306113" duration="1536000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="560" y="185" key="#Plugins" timestamp="1608621967593">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="560" y="185" key="#Plugins/-1440.-100.1440.900/0.0.1920.1080/1920.0.1080.1920@0.0.1920.1080" timestamp="1608621967593" />
+    <state x="827" y="358" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608254090089">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="827" y="358" key="#com.intellij.fileTypes.FileTypeChooser/-1440.119.1440.875/0.25.1920.1055@0.25.1920.1055" timestamp="1608254090089" />
+    <state x="867" y="488" key="#com.intellij.ide.util.TreeDirectoryChooserDialog" timestamp="1608618820803">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="867" y="488" key="#com.intellij.ide.util.TreeDirectoryChooserDialog/-1440.-100.1440.900/0.0.1920.1080/1920.0.1080.1920@0.0.1920.1080" timestamp="1608618820803" />
+    <state x="828" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608622280886">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="828" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.-100.1440.900/0.0.1920.1080/1920.0.1080.1920@0.0.1920.1080" timestamp="1608622280886" />
+    <state x="828" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.119.1440.875/0.25.1920.1055@0.25.1920.1055" timestamp="1608257153022" />
+    <state x="771" y="406" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1608619346885">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="771" y="406" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog/-1440.-100.1440.900/0.0.1920.1080/1920.0.1080.1920@0.0.1920.1080" timestamp="1608619346885" />
+    <state x="498" y="199" key="DBNavigator.ProjectSettingsDialog" timestamp="1608619359487">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="498" y="199" key="DBNavigator.ProjectSettingsDialog/-1440.-100.1440.900/0.0.1920.1080/1920.0.1080.1920@0.0.1920.1080" timestamp="1608619359487" />
+    <state x="559" y="152" key="SettingsEditor" timestamp="1608619207524">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="559" y="152" key="SettingsEditor/-1440.-100.1440.900/0.0.1920.1080/1920.0.1080.1920@0.0.1920.1080" timestamp="1608619207524" />
+    <state x="559" y="173" key="SettingsEditor/-1440.119.1440.875/0.25.1920.1055@0.25.1920.1055" timestamp="1608250303770" />
+    <state x="661" y="172" width="597" height="735" key="find.popup" timestamp="1608359188053">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="661" y="172" width="597" height="735" key="find.popup/-1440.-100.1440.900/1920.0.1080.1920/0.0.1920.1080@0.0.1920.1080" timestamp="1608359188053" />
+  </component>
+</project>

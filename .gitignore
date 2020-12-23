@@ -1,0 +1,9 @@
+api/node_modules/*
+api/dist/*
+api/prisma/migrations/*
+
+frontend/node_modules/*
+
+.grphqlconfig
+schema.graphql
+./idea/

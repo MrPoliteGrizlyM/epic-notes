@@ -1,0 +1,5 @@
+{
+  "app": {
+    "database_uri": "postgres://postgres:@127.0.0.1:5432/note-app"
+  }
+}
