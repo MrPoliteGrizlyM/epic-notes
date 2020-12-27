@@ -1,81 +1,13 @@
 import React, {Component} from 'react';
-import {Theme, WithStyles, Paper, MenuList, MenuItem, Grid, Container} from "@material-ui/core";
-import {withStyles, createStyles} from "@material-ui/core/styles";
+import {WithStyles, Paper, MenuList, MenuItem, Grid, Container} from "@material-ui/core";
+import {withStyles} from "@material-ui/core/styles";
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteIcon from '@material-ui/icons/Delete';
-import green from '@material-ui/core/colors/green';
 import {ContentTextarea, TitleInput} from "../../elements/inputs";
 import { SubmitButton } from "../../elements/buttons";
 import {StateContext} from "../../utils/state";
 import {Note} from "../../reducers";
-
-const styles = (theme: Theme) => createStyles({
-    root: {
-        display: 'flex',
-    },
-    paperMenu: {
-        height: "100vh",
-        marginRight: theme.spacing(2),
-        borderRadius: "0",
-        backgroundColor: "#F9F9FC"
-    },
-    menuTitle: {
-        fontSize: "11px",
-        fontWeight: 600,
-        color: "#AAAAAA",
-        margin: "13px 0 16px 16px"
-    },
-    menuItem: {
-        display:"flex",
-        justifyContent:"space-between",
-        fontSize: "14px",
-        fontWeight: 400,
-        height: "32px",
-        "&:hover ": {
-            backgroundColor: "#EDEDED"
-        }
-    },
-    menuSelectedItem: {
-        backgroundColor: "#EDEDED !important"
-    },
-    menuAddItem: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "35px",
-        "&:hover": {
-            backgroundColor: `${green[100]} !important`
-        }
-    },
-    menuDeleteItem: {
-        color: "#666666",
-        backgroundColor: "#D4D4D4",
-        fontSize: "20px"
-    },
-    unnamedNote: {
-        color: "#AAAAAA"
-    },
-    contentContainer: {
-      backgroundColor: "white"
-    },
-    contentBlock: {
-        marginTop: theme.spacing(20)
-    },
-    savingBlock: {
-        marginTop: "25px",
-        display: "none", // place "flex" here
-        alignItems: "center",
-        justifyContent: "flex-start",
-    },
-    submitButton: {
-        width: "150px !important"
-    },
-    savedMessage: {
-        fontSize: "14px",
-        marginLeft: "15px",
-        color: green[300]
-    }
-});
+import {styles} from "./MainStyles";
 
 interface IProps extends WithStyles<typeof styles> {}
 type State = {
@@ -108,28 +40,30 @@ class Main extends Component<IProps, State> {
     }
 
     findNoteById = (id: number) => {
-        return this.state.notes.find((el) => el.id === id) //
+        return this.state.notes.find((el) => el.id === id)
     }
 
     unselectCurrentNote = () => {
         const current_note: Note|undefined = this.findNoteById(this.state.current_note_id)
         if (current_note) {
-            current_note.selected = false; // LMAO, 'small brain solution' works! Sorry Abramov,
-                                           // but I think I've just found a bug. No warning received in the console.
-                                           // No worries, I used map function to change notes in other methods.
+            current_note.selected = false;
         }
     }
 
-    onAddNote = (dispatch: Function) => {
+    onAddNote = (dispatch: Function, notes: []) => {
         const new_id = this.state.id_counter+1;
         const new_note: Note = {id: new_id, title: `New note (${new_id})`, content:'', selected: true}
         this.unselectCurrentNote();
         dispatch({type: "addNote", value: new_note})
+        const old_notes = notes.map((el:Note) => {
+            el.selected = false
+            return el
+        })
         this.setState({
             id_counter: new_id,
             current_note_id: new_id,
             notes: [
-                ...this.state.notes,
+                ...old_notes,
                 new_note
             ],
             show_saved: false
@@ -142,7 +76,7 @@ class Main extends Component<IProps, State> {
             const new_notes = notes.filter((el) => el.id !== current_note.id)
             dispatch({type: "removeNote", value: current_note})
             this.setState({
-                notes: new_notes
+                notes: new_notes,
             })
         }
     }
@@ -151,9 +85,11 @@ class Main extends Component<IProps, State> {
         const this_note: Note|undefined = this.findNoteById(id);
         if (this_note) {
             this.unselectCurrentNote();
-            this_note.selected = true
+            const new_notes = notes.map((el: Note) => (el.id === this_note.id ?
+                                                                {...el, selected: true} : el))
             this.setState({
                 current_note_id: id,
+                notes: new_notes,
                 show_saved: false
             })
         }
@@ -161,32 +97,30 @@ class Main extends Component<IProps, State> {
 
     onSubmit = (current_note: Note|undefined, dispatch: Function) => {
         if (current_note) {
-            dispatch({type: "updateContent", value: current_note.content, id: current_note.id})
+            dispatch({type: "updateNotes", value: [...this.state.notes]})
             this.setState({
                 show_saved: true
             })
         }
     }
 
-    onTitleChange = (event: React.ChangeEvent<HTMLInputElement>, current_note: Note|undefined, dispatch: Function) => {
+    onTitleChange = (event: React.ChangeEvent<HTMLInputElement>, current_note: Note|undefined) => {
         if (current_note) {
-            let value_to_safe = event.currentTarget.value;
-            dispatch({type: "updateTitle", value: value_to_safe, id: current_note.id})
             this.setState({
                 show_saved: false,
                 notes: this.state.notes.map((el: Note) => (el.id === current_note.id ?
-                                                            {...el, title: value_to_safe} : el)) // Big brain solution!
+                                                            {...el, title: event.currentTarget.value} : el))
             })
         }
     }
 
     onContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>, current_note: Note|undefined) => {
         if (current_note) {
-            let value_to_safe = event.currentTarget.value;
+            const new_notes = this.state.notes.map((el: Note) => (el.id === current_note.id ?
+                                                        {...el, content: event.currentTarget.value} : el))
             this.setState({
                 show_saved: false,
-                notes: this.state.notes.map((el: Note) => (el.id === current_note.id ?
-                                                            {...el, content: value_to_safe} : el))
+                notes: new_notes
             })
         }
     }
@@ -202,20 +136,21 @@ class Main extends Component<IProps, State> {
                         <MenuList>
                             <p className={classes.menuTitle}>Notes</p>
                             {this.state.notes ? this.state.notes.map((el) => (
-                                <MenuItem key={el.id}
-                                          className={classes.menuItem}
-                                          classes={{ selected: classes.menuSelectedItem}}
-                                          selected={el.selected}
-                                          onClick={(event) =>
-                                              this.onSelectNote(event,notes,el.id)}>
-                                    {el.title ? el.title : <span className={classes.unnamedNote}>Unnamed note</span>}
+                                <div className={classes.menuItemBox} key={el.id}>
+                                    <MenuItem
+                                              className={classes.menuSelectItem}
+                                              classes={{ selected: classes.menuSelectedItem}}
+                                              selected={el.selected}
+                                              onClick={(event) =>
+                                                  this.onSelectNote(event,notes,el.id)}>
+                                        {el.title ? el.title : <span className={classes.unnamedNote}>Unnamed note</span>}
+                                    </MenuItem>
                                     {el.selected ? <DeleteIcon key={el.id}
                                                                onClick={() => this.onDeleteNote(current_note, dispatch)}
-                                                               className={classes.menuDeleteItem} /> : ""}
-
-                                </MenuItem>
+                                                               className={classes.menuDeleteItem}/> : ""}
+                                </div>
                             )) : ""}
-                            <MenuItem className={classes.menuAddItem} onClick={() => this.onAddNote(dispatch)}>
+                            <MenuItem className={classes.menuAddItem} onClick={() => this.onAddNote(dispatch, notes)}>
                                 <AddBoxIcon/>
                             </MenuItem>
                         </MenuList>
@@ -225,7 +160,7 @@ class Main extends Component<IProps, State> {
                     <Container component="main" maxWidth="sm">
                         {current_note ? <div className={classes.contentBlock}>
                             <TitleInput onChange={(event) => {
-                                this.onTitleChange(event, current_note, dispatch)
+                                this.onTitleChange(event, current_note)
                             }}
                                         value={current_note ? current_note.title : ""}
                                         placeholder={"Note Title"}

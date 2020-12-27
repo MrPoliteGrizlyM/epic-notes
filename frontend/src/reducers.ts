@@ -17,18 +17,11 @@ const initialState: IStates = {
 
 const reducer = (state: any, action: any) => {
     switch (action.type) {
-        case 'updateTitle':
+        case 'updateNotes':
             return {
                 ...state,
-                notes: state.notes.map((el: Note) => (el.id === action.id ?
-                                        {...el, title: action.value} : el))
+                notes: action.value
             };
-        case 'updateContent':
-            return {
-                ...state,
-                notes: state.notes.map((el: Note) => (el.id === action.id ?
-                                        {...el, content: action.value} : el))
-            }
         case 'addNote':
             return {
                 ...state,

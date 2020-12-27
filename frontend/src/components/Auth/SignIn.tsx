@@ -1,32 +1,14 @@
 import React, {Component} from 'react';
-import {Container, Theme, WithStyles,
+import {Container, WithStyles,
         CssBaseline, Typography} from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { withStyles, createStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { SubmitButton } from "../../elements/buttons";
 import { TextInput } from "../../elements/inputs";
 import {setJWTToken} from "../../utils/security";
 import {Redirect} from "react-router-dom";
-
-const styles = (theme: Theme) => createStyles({
-    paper: {
-        marginTop: theme.spacing(20),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(3),
-    },
-    submit: {
-        margin: theme.spacing(4, 0, 2),
-    },
-    error: {
-        width: '100%'
-    }
-});
-
+import {re_email} from "../../utils/additional";
+import {styles} from "./SignInStyles";
 
 interface Props extends WithStyles<typeof styles> {}
 interface StateTextInput {
@@ -56,11 +38,7 @@ class SignIn extends Component<Props, State> {
 
     onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.currentTarget.value;
-        const re = new RegExp(['^(([^<>()[\\]\\\\.,;:\\s@"]+(\\.[^<>()[\\]\\\\.,;:\\s@"]+)*)',
-            '|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|',
-            '(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
-        ].join(''))
-        if (re.test(String(value).toLowerCase())) {
+        if (re_email.test(String(value).toLowerCase())) {
             this.setState({
                 email: {
                     ...this.state.email,
